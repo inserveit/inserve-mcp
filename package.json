@@ -1,0 +1,44 @@
+{
+  "name": "@inserve/mcp-server",
+  "version": "0.1.4",
+  "description": "Koppel je AI-assistent (Claude, Cursor, ...) aan je Inserve-omgeving via MCP.",
+  "type": "module",
+  "bin": {
+    "inserve-mcp-server": "src/index.js"
+  },
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "README.md",
+    "icon.png",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test",
+    "pack:mcpb": "npx -y @anthropic-ai/mcpb pack . inserve-mcp.mcpb"
+  },
+  "keywords": [
+    "inserve",
+    "mcp",
+    "claude",
+    "psa"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "html-to-text": "^10.0.1",
+    "zod": "^3.25.0 || ^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inserveit/inserve-mcp.git"
+  },
+  "homepage": "https://github.com/inserveit/inserve-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/inserveit/inserve-mcp/issues"
+  }
+}

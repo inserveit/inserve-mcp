@@ -1,0 +1,8 @@
+.git/
+.gitignore
+.env
+test/
+*.mcpb
+.idea/
+**/.idea/
+.DS_Store

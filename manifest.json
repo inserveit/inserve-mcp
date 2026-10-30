@@ -1,0 +1,127 @@
+{
+  "manifest_version": "0.2",
+  "name": "inserve-mcp",
+  "display_name": "Inserve-MCP",
+  "version": "0.1.4",
+  "description": "Werk met tickets, relaties en uren uit Inserve vanuit Claude.",
+  "long_description": "Koppel Claude aan je Inserve-omgeving. Zoek en bekijk tickets, relaties, contactpersonen, assets en tijdregistraties, maak tickets aan, plaats verborgen notities of reacties, wijs categorieën toe en registreer tijd. Claude werkt met de rechten van de gebruiker bij de API-key.",
+  "icon": "icon.png",
+  "author": {
+    "name": "Inserve",
+    "url": "https://www.inserve.nl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inserveit/inserve-mcp.git"
+  },
+  "homepage": "https://github.com/inserveit/inserve-mcp",
+  "support": "https://github.com/inserveit/inserve-mcp/issues",
+  "license": "MIT",
+  "keywords": [
+    "inserve",
+    "psa",
+    "tickets",
+    "msp"
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "src/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/src/index.js"
+      ],
+      "env": {
+        "INSERVE_URL": "${user_config.url}",
+        "INSERVE_API_KEY": "${user_config.api_key}",
+        "INSERVE_READ_ONLY": "${user_config.read_only}"
+      }
+    }
+  },
+  "user_config": {
+    "url": {
+      "type": "string",
+      "title": "Inserve API-adres",
+      "description": "Het API-adres van je Inserve-omgeving, bijvoorbeeld https://jouwbedrijf.inserve-api.nl",
+      "required": true
+    },
+    "api_key": {
+      "type": "string",
+      "title": "API-key",
+      "description": "Maak een API-key aan in Inserve. Claude krijgt de rechten van de gebruiker bij deze key.",
+      "sensitive": true,
+      "required": true
+    },
+    "read_only": {
+      "type": "boolean",
+      "title": "Alleen lezen",
+      "description": "Zet aan om alleen de tools voor opzoeken en bekijken beschikbaar te maken.",
+      "default": false,
+      "required": false
+    }
+  },
+  "tools": [
+    {
+      "name": "search_tickets",
+      "description": "Tickets zoeken"
+    },
+    {
+      "name": "get_ticket",
+      "description": "Ticket bekijken met berichten en uren"
+    },
+    {
+      "name": "search_companies",
+      "description": "Relaties zoeken"
+    },
+    {
+      "name": "get_company",
+      "description": "Relatie bekijken"
+    },
+    {
+      "name": "search_contacts",
+      "description": "Contactpersonen zoeken"
+    },
+    {
+      "name": "search_assets",
+      "description": "Assets zoeken"
+    },
+    {
+      "name": "list_time_registrations",
+      "description": "Tijdregistraties bekijken"
+    },
+    {
+      "name": "list_lookups",
+      "description": "Statussen, prioriteiten, categorieën, activiteiten en behandelaars"
+    },
+    {
+      "name": "create_ticket",
+      "description": "Ticket aanmaken"
+    },
+    {
+      "name": "add_ticket_message",
+      "description": "Verborgen notitie of reactie plaatsen"
+    },
+    {
+      "name": "update_ticket",
+      "description": "Status, prioriteit of behandelaar wijzigen"
+    },
+    {
+      "name": "set_ticket_categories",
+      "description": "Categorieën van een ticket wijzigen"
+    },
+    {
+      "name": "log_time",
+      "description": "Tijd registreren"
+    }
+  ],
+  "compatibility": {
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
+    "runtimes": {
+      "node": ">=20.0.0"
+    }
+  }
+}
